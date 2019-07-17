@@ -1,0 +1,9 @@
+table {
+    font-size: 0.9rem;
+}
+
+.navbar-brand>img {
+    height: 10%;
+    width: 10%;
+    display: block;
+}
