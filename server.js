@@ -9,6 +9,7 @@ const app = express();
 app.use(body_parser.json());
 
 // Database config & connection
+// @@ DEV
 const mdb = require('./config/keys').mongoURI;
 
 // Mongo DB connection - TODO(jamie): refactor to async/await
