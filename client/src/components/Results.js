@@ -69,19 +69,45 @@ export default class Results extends Component {
         }
     }
 
+
+    getdistance = (d) => {
+        if (d === 1) {
+            return d + ' ' + 'mile away';
+        } else if (d === 0) {
+            return 'less than a mile away';
+        } else {
+            return d + ' ' + 'miles away';
+        }
+    }
+
     test = () => {
         let results = []
         const m = this.props.members
         let idx = 0
         var name;
-        m.forEach((rec) => {
+        for (var i = 0, len = m.length; i < len; i++) {
+            var current = m[i];
+            const rec = current[0];
+            const distance = current[1];
             idx += 1;
             name = rec.p_forename + ' ' + rec.p_surname;
             const tel_numbers = this.verify_telephone_number(rec.p_tel, rec.s_tel);
             //phone_num = ptel.substring(0,4) + ' '  + ptel.substring(4, ptel.len);
-            results.push(<tr><th scope="row">{idx}</th><td>{rec.co_name}</td><td>{name}</td><td>{tel_numbers}</td><td>{rec.email}</td></tr>);
+            var distance_string = this.getdistance(distance)
+            results.push(<tr><th scope="row">{idx}</th><td>{rec.co_name}</td><td>{name}</td><td>{tel_numbers}</td>
+            <td>{rec.email}</td><td>{distance_string}</td><td>{rec.postcode}</td></tr>);
+            }
+/*
+        m.forEach((record_and_distance) => {
+            const rec = record_and_distance[0];
+            const distance = record_and_distance[1];
+            idx += 1;
+            name = rec.p_forename + ' ' + rec.p_surname;
+            const tel_numbers = this.verify_telephone_number(rec.p_tel, rec.s_tel);
+            //phone_num = ptel.substring(0,4) + ' '  + ptel.substring(4, ptel.len);
+            results.push(<tr><th scope="row">{idx}</th><td>{rec.co_name}</td><td>{name}</td><td>{tel_numbers}</td><td>{rec.email}</td><td>{distance} miles away</td></tr>);
         });
-        console.log(results);
+        */
         return (results);
     }
 
