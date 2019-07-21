@@ -31,7 +31,6 @@ export default class AppForm extends Component {
             postcode: e.target.elements.postcode.value,
             radius: e.target.elements.radius.value
         };
-        console.log(pcr);
         if((pcr.postcode || pcr.radius) === undefined) {
             return;
         }

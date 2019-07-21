@@ -92,10 +92,9 @@ export default class Results extends Component {
             idx += 1;
             name = rec.p_forename + ' ' + rec.p_surname;
             const tel_numbers = this.verify_telephone_number(rec.p_tel, rec.s_tel);
-            //phone_num = ptel.substring(0,4) + ' '  + ptel.substring(4, ptel.len);
             var distance_string = this.getdistance(distance)
             results.push(<tr><th scope="row">{idx}</th><td>{rec.co_name}</td><td>{name}</td><td>{tel_numbers}</td>
-            <td>{rec.email}</td><td>{distance_string}</td><td>{rec.postcode}</td></tr>);
+            <td>{distance_string}</td><td>{rec.postcode}</td></tr>);
             }
 /*
         m.forEach((record_and_distance) => {
