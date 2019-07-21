@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import axios from 'axios';
 
 import AppNavbar from './components/AppNavbar';
-import AppForm from './components/AppForm';
-import Results from './components/Results';
+import Home from './components/Home';
+//import AppForm from './components/AppForm';
+//import Results from './components/Results';
 
 export default class App extends Component {
 
@@ -26,28 +27,20 @@ export default class App extends Component {
         });
       } catch (error) {
           if(error.repsonse) {
-            console.log("OH NO");
             console.log(error.response.status);
           }
       }
   }
   render() {
     return (
+      <Router>
         <div className="App">
           <AppNavbar/>
-          <AppForm api_call={this.api_call} />
-          <Results members={this.state.member_results}/>
+          <Switch>
+            <Route path="/" exact component={Home} />
+          </Switch>
         </div>
+        </Router>
     )
   }
 }
-
-/*
-        if (data !== undefined) {
-            this.setState({
-                member_results: data
-            });
-        } else {
-            return;
-        }
-        */
