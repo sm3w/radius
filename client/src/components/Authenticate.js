@@ -5,7 +5,6 @@ export default class Authenticate extends Component {
         return (
             <div>
                 <h1> Authenticated</h1>
-                
             </div>
         )
     }
